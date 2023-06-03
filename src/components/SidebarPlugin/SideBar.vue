@@ -46,7 +46,7 @@
     props: {
       title: {
         type: String,
-        default: "Creative Tim"
+        default: "Ship Logistics"
       },
       backgroundColor: {
         type: String,

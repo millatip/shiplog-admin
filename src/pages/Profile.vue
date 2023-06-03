@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-  import EditProfileForm from './Profile/EditProfileForm';
+  import EditProfileForm from './Profile/CargoCRUD';
   import UserCard from './Profile/UserCard'
   export default {
     components: {

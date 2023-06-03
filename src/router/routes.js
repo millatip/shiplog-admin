@@ -10,6 +10,13 @@ const Icons = () => import(/* webpackChunkName: "common" */ "@/pages/Icons.vue")
 const Maps = () => import(/* webpackChunkName: "common" */ "@/pages/Maps.vue");
 const Typography = () => import(/* webpackChunkName: "common" */ "@/pages/Typography.vue");
 const TableList = () => import(/* webpackChunkName: "common" */ "@/pages/TableList.vue");
+const UserManagement = () => import(/* webpackChunkName: "common" */ "@/pages/UserManagement");
+const CargoManagement = () => import(/* webpackChunkName: "common" */ "@/pages/CargoManagement");
+const VesselTracking = () => import(/* webpackChunkName: "common" */ "@/pages/VesselTracking");
+const ContainerTerminal = () => import(/* webpackChunkName: "common" */ "@/pages/ContainerTerminal");
+const CustomClearance = () => import(/* webpackChunkName: "common" */ "@/pages/CustomClearance");
+const FeeSettlement = () => import(/* webpackChunkName: "common" */ "@/pages/FeeSettlement");
+const TransactionManagement = () => import(/* webpackChunkName: "common" */ "@/pages/TransactionManagement");
 
 const routes = [
   {
@@ -23,34 +30,34 @@ const routes = [
         component: Dashboard
       },
       {
-        path: "profile",
-        name: "profile",
-        component: Profile
+        path: "user-management",
+        name: "user management",
+        component: UserManagement
       },
       {
-        path: "notifications",
-        name: "notifications",
-        component: Notifications
+        path: "cargo-management",
+        name: "cargo management",
+        component: CargoManagement
       },
       {
-        path: "icons",
-        name: "icons",
-        component: Icons
+        path: "vessel-tracking",
+        name: "vessel tracking",
+        component: VesselTracking
       },
       {
-        path: "maps",
-        name: "maps",
-        component: Maps
+        path: "container-terminal",
+        name: "container terminal",
+        component: ContainerTerminal
       },
       {
-        path: "typography",
-        name: "typography",
-        component: Typography
+        path: "custom-clearance",
+        name: "custom clearance",
+        component: CustomClearance
       },
       {
-        path: "table-list",
-        name: "table-list",
-        component: TableList
+        path: "fee-settlement",
+        name: "fee settlement",
+        component: FeeSettlement
       }
     ]
   },

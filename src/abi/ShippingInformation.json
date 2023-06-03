@@ -1,0 +1,197 @@
+[
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "cargoId",
+                "type": "uint256"
+            }
+        ],
+        "name": "CargoDeleted",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "cargoId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "cargoType",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "destination",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "expectedArrivalTime",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "otherDetails",
+                "type": "string"
+            }
+        ],
+        "name": "CargoRegistered",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "cargoId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "cargoType",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "destination",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "expectedArrivalTime",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "otherDetails",
+                "type": "string"
+            }
+        ],
+        "name": "CargoUpdated",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_cargoId",
+                "type": "uint256"
+            }
+        ],
+        "name": "deleteCargo",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_cargoId",
+                "type": "uint256"
+            }
+        ],
+        "name": "getCargoInfo",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "cargoType",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "destination",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "expectedArrivalTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "otherDetails",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_cargoType",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_destination",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_expectedArrivalTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_otherDetails",
+                "type": "string"
+            }
+        ],
+        "name": "registerCargo",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_cargoId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_cargoType",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_destination",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_expectedArrivalTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_otherDetails",
+                "type": "string"
+            }
+        ],
+        "name": "updateCargo",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]
