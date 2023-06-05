@@ -6,8 +6,8 @@
           <div class="card-body">
             <form @submit.prevent="getCargoLoadingSchedule">
               <div class="form-group">
-                <label for="cargoID">Cargo ID</label>
-                <input type="text" id="cargoID" class="form-control" v-model="cargoID" required>
+                <label for="loadingCargoID">Cargo ID</label>
+                <input type="text" id="loadingCargoID" class="form-control" v-model="loadingCargoID" required>
               </div>
               <button type="submit" class="btn btn-primary">Get Schedule</button>
             </form>
@@ -23,8 +23,8 @@
           <div class="card-body">
             <form @submit.prevent="getCargoUnloadingSchedule">
               <div class="form-group">
-                <label for="cargoID">Cargo ID</label>
-                <input type="text" id="cargoID" class="form-control" v-model="cargoID" required>
+                <label for="unloadingCargoID">Cargo ID</label>
+                <input type="text" id="unloadingCargoID" class="form-control" v-model="unloadingCargoID" required>
               </div>
               <button type="submit" class="btn btn-primary">Get Schedule</button>
             </form>
@@ -40,12 +40,12 @@
           <div class="card-body">
             <form @submit.prevent="updateCargoLoadingSchedule">
               <div class="form-group">
-                <label for="cargoID">Cargo ID</label>
-                <input type="text" id="cargoID" class="form-control" v-model="cargoID" required>
+                <label for="updateLoadingCargoID">Cargo ID</label>
+                <input type="text" id="updateLoadingCargoID" class="form-control" v-model="updateLoadingCargoID" required>
               </div>
               <div class="form-group">
-                <label for="terminalLocation">Terminal Location</label>
-                <input type="text" id="terminalLocation" class="form-control" v-model="terminalLocation" required>
+                <label for="loadingTerminalLocation">Terminal Location</label>
+                <input type="text" id="loadingTerminalLocation" class="form-control" v-model="loadingTerminalLocation" required>
               </div>
               <button type="submit" class="btn btn-primary">Update Schedule</button>
             </form>
@@ -58,12 +58,12 @@
           <div class="card-body">
             <form @submit.prevent="updateCargoUnloadingSchedule">
               <div class="form-group">
-                <label for="cargoID">Cargo ID</label>
-                <input type="text" id="cargoID" class="form-control" v-model="cargoID" required>
+                <label for="updateUnloadingCargoID">Cargo ID</label>
+                <input type="text" id="updateUnloadingCargoID" class="form-control" v-model="updateUnloadingCargoID" required>
               </div>
               <div class="form-group">
-                <label for="terminalLocation">Terminal Location</label>
-                <input type="text" id="terminalLocation" class="form-control" v-model="terminalLocation" required>
+                <label for="unloadingTerminalLocation">Terminal Location</label>
+                <input type="text" id="unloadingTerminalLocation" class="form-control" v-model="unloadingTerminalLocation" required>
               </div>
               <button type="submit" class="btn btn-primary">Update Schedule</button>
             </form>
@@ -74,27 +74,72 @@
   </template>
   
   <script>
+  import Web3 from 'web3';
+  import contractABI from '@/abi/ContainerTerminal.json';
+  
+  const contractAddress = '0x3719FD153D9F0eFf28c948AddE2B3F411Cc95617';
+  const web3 = new Web3('http://127.0.0.1:7545');
+  const contract = new web3.eth.Contract(contractABI, contractAddress);
+  
   export default {
     data() {
       return {
-        cargoID: "",
-        terminalLocation: "",
-        loadingSchedule: "",
-        unloadingSchedule: "",
+        loadingCargoID: '',
+        unloadingCargoID: '',
+        updateLoadingCargoID: '',
+        updateUnloadingCargoID: '',
+        loadingTerminalLocation: '',
+        unloadingTerminalLocation: '',
+        loadingSchedule: '',
+        unloadingSchedule: '',
       };
     },
     methods: {
       getCargoLoadingSchedule() {
-        // Implement logic to retrieve cargo loading schedule using cargoID
+        contract.methods
+          .getCargoLoadingSchedule(this.loadingCargoID)
+          .call({ gas: 5000000 })
+          .then((loadingSchedule) => {
+            this.loadingSchedule = loadingSchedule;
+          })
+          .catch((error) => {
+            console.error('Get Cargo Loading Schedule Error:', error);
+            this.loadingSchedule = 'Error retrieving loading schedule';
+          });
       },
       getCargoUnloadingSchedule() {
-        // Implement logic to retrieve cargo unloading schedule using cargoID
+        contract.methods
+          .getCargoUnloadingSchedule(this.unloadingCargoID)
+          .call({ gas: 5000000 })
+          .then((unloadingSchedule) => {
+            this.unloadingSchedule = unloadingSchedule;
+          })
+          .catch((error) => {
+            console.error('Get Cargo Unloading Schedule Error:', error);
+            this.unloadingSchedule = 'Error retrieving unloading schedule';
+          });
       },
       updateCargoLoadingSchedule() {
-        // Implement logic to update cargo loading schedule with cargoID and terminalLocation
+        contract.methods
+          .updateCargoLoadingSchedule(this.updateLoadingCargoID, this.loadingTerminalLocation)
+          .send({ from: '0xABb94610763afe43dE3f150c1224B6806C1E9F76', gas: 5000000 })
+          .then(() => {
+            console.log('Cargo loading schedule updated successfully');
+          })
+          .catch((error) => {
+            console.error('Update Cargo Loading Schedule Error:', error);
+          });
       },
       updateCargoUnloadingSchedule() {
-        // Implement logic to update cargo unloading schedule with cargoID and terminalLocation
+        contract.methods
+          .updateCargoUnloadingSchedule(this.updateUnloadingCargoID, this.unloadingTerminalLocation)
+          .send({ from: '0xABb94610763afe43dE3f150c1224B6806C1E9F76', gas: 5000000 })
+          .then(() => {
+            console.log('Cargo unloading schedule updated successfully');
+          })
+          .catch((error) => {
+            console.error('Update Cargo Unloading Schedule Error:', error);
+          });
       },
     },
   };

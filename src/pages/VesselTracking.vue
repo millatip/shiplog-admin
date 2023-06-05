@@ -21,6 +21,12 @@
             </form>
           </div>
         </div>
+        <card class="card" :header-classes="{'text-right': isRTL}">
+          <h4 slot="header" class="card-title">{{$t('dashboard.simpleTable')}}</h4>
+          <div class="table-responsive">
+            <cargo-table></cargo-table>
+          </div>
+        </card>
       </div>
       <div class="col-md-4">
         <div class="card">
@@ -40,10 +46,22 @@
         </div>
       </div>
     </div>
+    
+
   </template>
   
-  <script>
+<script>
+import Web3 from 'web3';
+import CargoTable from './Dashboard/CargoTable';
+import contractABI from '@/abi/VesselFleet.json';
+const contractAddress = "0x4f5003418fcBc6316A028654385f948610dC0183"
+const web3 = new Web3('http://127.0.0.1:7545');
+const contract = new web3.eth.Contract(contractABI, contractAddress);
+
   export default {
+    components: {
+      CargoTable,
+    },
     data() {
       return {
         cargoID: '',
@@ -53,14 +71,47 @@
       };
     },
     methods: {
-      updateVesselFleetData() {
-        // Call the updateVesselFleetData function with this.cargoID, this.currentLocation, this.eta
-        // Handle the response or any errors
-      },
-      getLocationOrETA() {
-        // Call the getLocationOrETA function with this.cargoID
-        // Set this.locationOrETA with the response or handle any errors
-      },
+        async updateVesselFleetData() {
+      try {
+        
+
+        const unixTimestamp = Math.floor(new Date(this.eta).getTime() / 1000);
+
+        await contract.methods.updateVesselFleetData(this.cargoID, this.currentLocation, unixTimestamp)
+          .send({ from: "0xEFb3183F3D39247BdAd4AA15D3b5e2Aa3E23b49f", gas: 5000000 });
+
+        this.cargoID = '';
+        this.currentLocation = '';
+        this.eta = '';
+
+        this.refreshTable = !this.refreshTable; // Trigger table refresh
+        this.$notify({type: 'success', message: 'Successfully Updated Vessel Fleet Data'})
+        // Reload the page to reflect the updated data in the table
+        // window.location.reload();
+      } catch (error) {
+        console.error('Update Vessel Fleet Data Error:', error);
+        // Handle error or show error message
+      }
+    },
+    getLocationOrETA() {
+      contract.methods
+        .getCurrentLocation(this.cargoID)
+        .call({ gas: 5000000 })
+        .then((currentLocation) => {
+          return contract.methods.getEstimatedTimeOfArrival(this.cargoID).call({ gas: 5000000 })
+            .then((estimatedTimeOfArrival) => {
+              this.locationOrETA = `Location: ${currentLocation}, ETA: ${estimatedTimeOfArrival}`;
+            })
+            .catch((error) => {
+              console.error('Get Estimated Time of Arrival Error:', error);
+              this.locationOrETA = 'Error retrieving ETA';
+            });
+        })
+        .catch((error) => {
+          console.error('Get Current Location Error:', error);
+          this.locationOrETA = 'Error retrieving Location';
+        });
+    },
     },
   };
   </script>

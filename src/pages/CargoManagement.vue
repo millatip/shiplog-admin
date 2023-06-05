@@ -6,9 +6,9 @@
       </div>
       <div class="col-lg-6 col-md-12">
         <card class="card" :header-classes="{'text-right': isRTL}">
-          <h4 slot="header" class="card-title">{{$t('dashboard.cargoTable')}}</h4>
+          <h4 slot="header" class="card-title">{{$t('dashboard.simpleTable')}}</h4>
           <div class="table-responsive">
-            <user-table></user-table>
+            <cargo-table></cargo-table>
           </div>
         </card>
       </div>
@@ -17,12 +17,13 @@
   <script>
     import EditProfileForm from './Profile/CargoCRUD';
     import UserCard from './Profile/UserCard'
-    import UserTable from './Dashboard/UserTable';
+    import CargoTable from './Dashboard/CargoTable';
     
     export default {
       components: {
         EditProfileForm,
-        UserCard
+        UserCard,
+        CargoTable
       },
       data() {
         return {

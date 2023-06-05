@@ -100,6 +100,41 @@
         "type": "function"
     },
     {
+        "inputs": [],
+        "name": "getAllCargoInfo",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "string",
+                        "name": "cargoType",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "destination",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "expectedArrivalTime",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "otherDetails",
+                        "type": "string"
+                    }
+                ],
+                "internalType": "struct ShippingInformation.Cargo[]",
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
         "inputs": [
             {
                 "internalType": "uint256",

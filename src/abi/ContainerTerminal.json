@@ -1,0 +1,189 @@
+[
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "cargoID",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "terminalLocation",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "enum ContainerTerminal.CargoStatus",
+                "name": "status",
+                "type": "uint8"
+            }
+        ],
+        "name": "CargoScheduled",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_cargoID",
+                "type": "string"
+            }
+        ],
+        "name": "getAllCargoSchedule",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "enum ContainerTerminal.CargoStatus",
+                "name": "",
+                "type": "uint8"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_cargoID",
+                "type": "string"
+            }
+        ],
+        "name": "getCargoLoadingSchedule",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "enum ContainerTerminal.CargoStatus",
+                "name": "",
+                "type": "uint8"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_cargoID",
+                "type": "string"
+            }
+        ],
+        "name": "getCargoUnloadingSchedule",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "enum ContainerTerminal.CargoStatus",
+                "name": "",
+                "type": "uint8"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_cargoID",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_terminalLocation",
+                "type": "string"
+            }
+        ],
+        "name": "updateCargoLoadingSchedule",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_cargoID",
+                "type": "string"
+            },
+            {
+                "internalType": "enum ContainerTerminal.CargoStatus",
+                "name": "_status",
+                "type": "uint8"
+            }
+        ],
+        "name": "updateCargoScheduleStatus",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_cargoID",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_terminalLocation",
+                "type": "string"
+            }
+        ],
+        "name": "updateCargoUnloadingSchedule",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]

@@ -2,13 +2,11 @@
   <div class="wrapper">
     <side-bar>
       <template slot="links">
-        <sidebar-link to="/dashboard" :name="$t('sidebar.dashboard')" icon="tim-icons icon-chart-pie-36"/>
-        <sidebar-link to="/user-management" :name="$t('sidebar.userManagement')" icon="tim-icons icon-atom"/>
-        <sidebar-link to="/cargo-management" :name="$t('sidebar.cargoManagement')" icon="tim-icons icon-pin"/>
-        <sidebar-link to="/vessel-tracking" :name="$t('sidebar.vesselVleetManagement')" icon="tim-icons icon-bell-55"/>
-        <sidebar-link to="/container-terminal" :name="$t('sidebar.containerTerminalManagement')" icon="tim-icons icon-single-02"/>
-        <sidebar-link to="/custom-clearance" :name="$t('sidebar.cargoTracking')" icon="tim-icons icon-align-center"/>
-        <sidebar-link to="/fee-settlement" :name="$t('sidebar.feeSettlement')" icon="tim-icons icon-align-center"/>
+        <sidebar-link to="/cargo-management" :name="$t('sidebar.cargoManagement')" icon="tim-icons icon-delivery-fast"/>
+        <sidebar-link to="/vessel-tracking" :name="$t('sidebar.vesselVleetManagement')" icon="tim-icons icon-compass-05"/>
+        <sidebar-link to="/container-terminal" :name="$t('sidebar.containerTerminalManagement')" icon="tim-icons icon-app"/>
+        <sidebar-link to="/custom-clearance" :name="$t('sidebar.cargoTracking')" icon="tim-icons icon-badge"/>
+        <sidebar-link to="/fee-settlement" :name="$t('sidebar.feeSettlement')" icon="tim-icons icon-money-coins"/>
       </template>
     </side-bar>
     <div class="main-panel">

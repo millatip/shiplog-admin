@@ -49,7 +49,7 @@
 <script>
 import Web3 from 'web3'; // 
 import contractABI from '@/abi/ShippingInformation.json'; // Import contract ABI
-const contractAddress = '0xb2AAa406E6438548c85aB79de5BFC796a4A3527A'; // Replace with your contract address
+const contractAddress = '0x0f1f3cBD0F2A020934A2c0f35ff2B3Fff28bE982'; // Replace with your contract address
 const web3 = new Web3('http://127.0.0.1:7545'); // Replace with your provider URL
 
 export default {
@@ -79,10 +79,12 @@ export default {
           .send({ from: "0xEFb3183F3D39247BdAd4AA15D3b5e2Aa3E23b49f", gas: 5000000 })
           .then((result) => {
             console.log("Cargo Updated:", result);
+            this.$notify({type: 'success', message: 'Success Updating Cargo'})
             // Handle success or update UI
           })
           .catch((error) => {
             console.error("Cargo Update Error:", error);
+            this.$notify({type: 'warning', message: 'Error Updating Cargo'})
             // Handle error or show error message
           });
       } else {
@@ -97,10 +99,13 @@ export default {
           .send({ from: "0xEFb3183F3D39247BdAd4AA15D3b5e2Aa3E23b49f",gas: 5000000 })
           .then((result) => {
             console.log("Cargo Registered:", result);
+            this.$notify({type: 'success', message: 'Success Registering Cargo'})
+            window.location.reload();
             // Handle success or update UI
           })
           .catch((error) => {
             console.error("Cargo Registration Error:", error);
+            this.$notify({type: 'warning', message: 'Error Registering Cargo'})
             // Handle error or show error message
           });
       }

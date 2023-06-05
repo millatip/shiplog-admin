@@ -1,0 +1,92 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_cargoID",
+                "type": "string"
+            }
+        ],
+        "name": "getCurrentLocation",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_cargoID",
+                "type": "string"
+            }
+        ],
+        "name": "getEstimatedTimeOfArrival",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_cargoID",
+                "type": "string"
+            }
+        ],
+        "name": "getVesselFleetData",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_cargoID",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_currentLocation",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_estimatedTimeOfArrival",
+                "type": "uint256"
+            }
+        ],
+        "name": "updateVesselFleetData",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]

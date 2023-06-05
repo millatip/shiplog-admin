@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-table :data="cargoList" :columns="tableColumns" thead-classes="text-primary">
+    <base-table :data="flattenedCargoList" :columns="tableColumns" thead-classes="text-primary">
     </base-table>
   </div>
 </template>
@@ -10,7 +10,7 @@ import { BaseTable } from "@/components";
 import Web3 from 'web3';
 import contractABI from '@/abi/ShippingInformation.json';
 
-const contractAddress = '0xb2AAa406E6438548c85aB79de5BFC796a4A3527A';
+const contractAddress = '0x0f1f3cBD0F2A020934A2c0f35ff2B3Fff28bE982';
 const web3 = new Web3('http://127.0.0.1:7545');
 
 export default {
@@ -21,9 +21,20 @@ export default {
     return {
       cargoList: [],
       tableColumns: [
-        "id", "cargoType", "destination", "expectedArrivalTime", "otherDetails"
+        "id", "type", "destination", "eta", "details"
       ],
     };
+  },
+  computed: {
+    flattenedCargoList() {
+      return this.cargoList.flatMap((item, index) => ({
+        id: index,
+        type: item[0],
+        destination: item[1],
+        eta: item[2],
+        details: item[3],
+      }));
+    },
   },
   mounted() {
     this.getAllCargo();
@@ -37,6 +48,7 @@ export default {
         .call({ gas: 5000000 })
         .then((result) => {
           this.cargoList = result;
+          console.log(this.cargoList);
         })
         .catch((error) => {
           console.error("Get All Cargo Error:", error);
